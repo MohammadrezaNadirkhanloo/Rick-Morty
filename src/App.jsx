@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
+import Section from "./components/Section";
 
 function App() {
   const [theme, setTheme] = useState("dim");
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <Header handelTheme={handel} theme={theme} />
+      <Section />
     </>
   );
 }

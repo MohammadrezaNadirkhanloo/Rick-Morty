@@ -5,7 +5,7 @@ function Header({ handelTheme, theme }) {
   return (
     <>
       <div
-        className={`navbar my-3 rounded-2xl justify-between px-3 ${
+        className={`navbar my-3 rounded-2xl justify-between px-3 shadow-xl ${
           theme === "dim" ? "bg-gray-700" : "bg-gray-100"
         }`}
       >
