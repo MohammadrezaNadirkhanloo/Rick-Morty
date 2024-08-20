@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { CiBrightnessUp } from "react-icons/ci";
-import { IoMoonOutline } from "react-icons/io5";
+import Header from "./components/Header";
 
 function App() {
   const [theme, setTheme] = useState("dim");
@@ -12,15 +11,7 @@ function App() {
   };
   return (
     <>
-      <label className="grid cursor-pointer place-items-center">
-        <input
-          onClick={handel}
-          type="checkbox"
-          className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
-        />
-        <CiBrightnessUp />
-        <IoMoonOutline />
-      </label>
+      <Header handelTheme={handel} theme={theme} />
     </>
   );
 }
