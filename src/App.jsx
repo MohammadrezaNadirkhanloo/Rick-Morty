@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Header handelTheme={handel} theme={theme} />
-      <Section />
+      <Section theme={theme} />
     </>
   );
 }

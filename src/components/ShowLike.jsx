@@ -10,7 +10,7 @@ function ShowLike() {
         >
             <div className="indicator">
             <FcLike size={25} />
-            <span class="badge badge-sm indicator-item">8</span>
+            <span className="badge badge-sm indicator-item">8</span>
 
             </div>
           
