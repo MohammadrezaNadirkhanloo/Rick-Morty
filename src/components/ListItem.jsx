@@ -3,7 +3,7 @@ import { FaRegEye } from "react-icons/fa";
 
 function ListItem() {
   return (
-    <div className="">
+    <div>
       <div
         className={`bg-gray-700/50 p-3 rounded-2xl flex items-center justify-between`}
       >
