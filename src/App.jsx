@@ -1,24 +1,26 @@
+import { useState } from "react";
 import "./App.css";
+import { CiBrightnessUp } from "react-icons/ci";
+import { IoMoonOutline } from "react-icons/io5";
 
 function App() {
+  const [theme, setTheme] = useState("dim");
+  const handel = () => {
+    const newTheme = theme === "dim" ? "light" : "dim";
+    document.documentElement.dataset.theme = newTheme;
+    setTheme(newTheme);
+  };
   return (
     <>
-      <div>
-{/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>open modal</button>
-<dialog id="my_modal_1" className="modal">
-  <div className="modal-box">
-    <h3 className="font-bold text-lg">Hello!</h3>
-    <p className="py-4">Press ESC key or click the button below to close</p>
-    <div className="modal-action">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        <button className="btn">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
-      </div>
+      <label className="grid cursor-pointer place-items-center">
+        <input
+          onClick={handel}
+          type="checkbox"
+          className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
+        />
+        <CiBrightnessUp />
+        <IoMoonOutline />
+      </label>
     </>
   );
 }
