@@ -1,18 +1,19 @@
 import React from "react";
 import { character } from "../../data/data.js";
+import Episodes from "./Episodes.jsx";
 
 function ShowItem({ theme }) {
   return (
-    <div>
+    <div className="flex flex-col gap-6">
       <Item theme={theme} />
-      
+      <Episodes theme={theme} />
     </div>
   );
 }
 
 export default ShowItem;
 
-function Item({theme}) {
+function Item({ theme }) {
   const dataItem = character;
 
   return (
@@ -22,7 +23,7 @@ function Item({theme}) {
       } p-1 rounded-2xl flex items-center shadow-md gap-5`}
     >
       <div>
-        <img src={dataItem.image} className="rounded-lg" alt="Actor" />
+        <img src={dataItem.image} className="rounded-lg w-56" alt="Actor" />
       </div>
       <div className="flex flex-col items-start space-y-5">
         <div className="flex flex-col items-start gap-1">
