@@ -1,19 +1,13 @@
 import React from "react";
 import { character } from "../../data/data.js";
-import Episodes from "./Episodes.jsx";
 
-function ShowItem({ theme }) {
-  return (
-    <div className="flex flex-col gap-6">
-      <Item theme={theme} />
-      <Episodes theme={theme} />
-    </div>
-  );
+function ShowItem({ children }) {
+  return <div className="flex flex-col gap-6">{children}</div>;
 }
 
 export default ShowItem;
 
-function Item({ theme }) {
+export function Item({ theme }) {
   const dataItem = character;
 
   return (

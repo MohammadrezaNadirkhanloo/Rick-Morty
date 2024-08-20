@@ -1,7 +1,7 @@
 import { FaMoon, FaSun } from "react-icons/fa6";
 import ShowLike from "./ShowLike";
 
-function Header({ handelTheme, theme }) {
+function Header({ theme, children }) {
   return (
     <>
       <div
@@ -12,7 +12,7 @@ function Header({ handelTheme, theme }) {
         <a className="text-xl">Rick & Morty</a>
         <div className="flex items-center gap-1">
           <ShowLike />
-          <ChangeTheme data={handelTheme} />
+          {children}
         </div>
       </div>
     </>
@@ -21,11 +21,15 @@ function Header({ handelTheme, theme }) {
 
 export default Header;
 
-function ChangeTheme({ data }) {
+export function ChangeTheme({ handelTheme }) {
   return (
     <div>
       <label className="swap swap-rotate btn btn-ghost btn-circle">
-        <input onClick={data} type="checkbox" className="theme-controller " />
+        <input
+          onClick={handelTheme}
+          type="checkbox"
+          className="theme-controller "
+        />
         <FaSun className="swap-off fill-current" size={20} />
         <FaMoon className="swap-on fill-current" size={20} />
       </label>

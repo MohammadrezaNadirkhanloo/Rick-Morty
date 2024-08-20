@@ -14,7 +14,7 @@ function Episodes({ theme }) {
       </div>
       <div className="space-y-2">
         {datas.map((item, index) => (
-          <div className="flex justify-between">
+          <div key={item.id} className="flex justify-between">
             <div className="flex text-lg font-semibold">
               <p>
                 <span>{String(index).padStart(2, "0")}-</span>

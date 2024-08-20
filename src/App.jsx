@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./App.css";
-import Header from "./components/Header";
+import Header, { ChangeTheme } from "./components/Header";
 import Section from "./components/Section";
 
 function App() {
@@ -12,7 +11,9 @@ function App() {
   };
   return (
     <>
-      <Header handelTheme={handel} theme={theme} />
+      <Header theme={theme}>
+        <ChangeTheme handelTheme={handel} />
+      </Header>
       <Section theme={theme} />
     </>
   );
