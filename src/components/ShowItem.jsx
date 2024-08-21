@@ -14,12 +14,12 @@ export function Item({ theme }) {
     <div
       className={`${
         theme === "dim" ? "bg-gray-700/50" : "bg-gray-100/50"
-      } p-1 rounded-2xl grid col-span-1 items-center shadow-md gap-5`}
+      } p-1 rounded-2xl grid grid-cols-1 sm:grid-cols-3 lg:flex lg:justify-start shadow-md sm:gap-2`}
     >
       <div>
-        <img src={dataItem.image} className="rounded-lg w-56" alt="Actor" />
+        <img src={dataItem.image} className="rounded-lg sm:w-56 w-full h-full" alt="Actor" />
       </div>
-      <div className="flex flex-col items-start space-y-5">
+      <div className="flex flex-col items-start space-y-5 col-span-2 p-5">
         <div className="flex flex-col items-start gap-1">
           <p className="text-2xl font-semibold ms-1 ">
             <span>{dataItem.gender === "Male" ? "👨‍🦳" : "👩‍🦳"}</span>

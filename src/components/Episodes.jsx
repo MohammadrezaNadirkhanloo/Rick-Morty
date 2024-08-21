@@ -6,7 +6,7 @@ function Episodes({ theme }) {
     <div
       className={`${
         theme === "dim" ? "bg-gray-700/50" : "bg-gray-100/50"
-      } p-4 rounded-2xl shadow-md`}
+      } p-4 rounded-2xl shadow-md mb-8 lg:mb-0`}
     >
       <div className="flex items-center justify-between mb-6">
         <p className="font-bold text-2xl">List of Episodes:</p>
