@@ -14,7 +14,7 @@ export function Item({ theme }) {
     <div
       className={`${
         theme === "dim" ? "bg-gray-700/50" : "bg-gray-100/50"
-      } p-1 rounded-2xl flex items-center shadow-md gap-5`}
+      } p-1 rounded-2xl grid col-span-1 items-center shadow-md gap-5`}
     >
       <div>
         <img src={dataItem.image} className="rounded-lg w-56" alt="Actor" />

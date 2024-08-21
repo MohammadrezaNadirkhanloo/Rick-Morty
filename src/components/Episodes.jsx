@@ -14,7 +14,7 @@ function Episodes({ theme }) {
       </div>
       <div className="space-y-2">
         {datas.map((item, index) => (
-          <div key={item.id} className="grid col-span-1 gap-2">
+          <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-2">
             <div className="">
               <div className="flex text-lg font-semibold">
                 <p>
