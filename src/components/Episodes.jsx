@@ -14,20 +14,24 @@ function Episodes({ theme }) {
       </div>
       <div className="space-y-2">
         {datas.map((item, index) => (
-          <div key={item.id} className="flex justify-between">
-            <div className="flex text-lg font-semibold">
-              <p>
-                <span>{String(index).padStart(2, "0")}-</span>
-                {item.episode} :
-              </p>
-              <p>{item.name}</p>
+          <div key={item.id} className="grid col-span-1 gap-2">
+            <div className="">
+              <div className="flex text-lg font-semibold">
+                <p>
+                  <span>{String(index).padStart(2, "0")}-</span>
+                  {item.episode} : {item.name}
+                </p>
+                <p></p>
+              </div>
             </div>
-            <div
-              className={`${
-                theme === "dim" ? "bg-gray-600" : "bg-gray-200"
-              } rounded-badge px-6`}
-            >
-              <p className="font-semibold">{item.air_date}</p>
+            <div className="flex justify-end">
+              <div
+                className={`${
+                  theme === "dim" ? "bg-gray-600" : "bg-gray-200"
+                } px-3 rounded-badge text-center text-e`}
+              >
+                <p className="font-semibold">{item.air_date}</p>
+              </div>
             </div>
           </div>
         ))}

@@ -35,7 +35,7 @@ export function Item({ theme }) {
           <p className="font-semibold">{dataItem.location.name}</p>
         </div>
         <div>
-          <button className="btn btn-active btn-ghost rounded-badge text-lg ">
+          <button className="btn btn-outline rounded-badge text-lg borde">
             Add to Favorite
           </button>
         </div>
