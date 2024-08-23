@@ -5,6 +5,8 @@ import ListItem from "./components/ListItem";
 import ShowItem, { Item } from "./components/ShowItem";
 import Episodes from "./components/Episodes";
 import Loader from "./components/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [theme, setTheme] = useState("dim");
@@ -12,16 +14,20 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    try {
-      async function fetchData() {
+    async function fetchData() {
+      try {
         setIsLoading(true);
         const res = await fetch("https://rickandmortyapi.com/api/character");
+        if (!res.ok) throw new Error("Error");
         const data = await res.json();
         setCharacters(data.results.slice(0, 6));
+        // toast.success("welcome");
         setIsLoading(false);
+      } catch (err) {
+        // toast.error(err.message);
       }
-      fetchData();
-    } catch (error) {}
+    }
+    fetchData();
   }, []);
 
   const handelChangeTheme = () => {
@@ -31,6 +37,8 @@ function App() {
   };
   return (
     <>
+      {/* <ToastContainer theme="colored" /> */}
+
       <Header theme={theme}>
         <ChangeTheme handelTheme={handelChangeTheme} />
       </Header>
