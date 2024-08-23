@@ -36,7 +36,7 @@ function Itemlist({ data, theme, statusEys, eventHandel }) {
           <img src={data.image} className="w-16 rounded-xl" alt="actor" />
         </div>
         <div className="flex flex-col items-start">
-          <p className="text-lg font-semibold ">
+          <p className="text-md sm:text-lg font-semibold ">
             <span>{data.gender === "Male" ? "👨‍🦳" : "👩‍🦳"}</span>
             {data.name}
           </p>
