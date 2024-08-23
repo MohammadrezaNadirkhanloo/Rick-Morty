@@ -24,7 +24,7 @@ function App() {
           setCharacters(data.results.slice(0, 8));
           toast.success("welcome");
           setIsLoading(false);
-        }, 1500);
+        }, 2000);
       } catch (err) {
         toast.error(err.message);
       }

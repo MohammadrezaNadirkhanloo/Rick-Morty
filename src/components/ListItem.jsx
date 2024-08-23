@@ -37,7 +37,7 @@ function Itemlist({ data, theme, statusEys, eventHandel }) {
         </div>
         <div className="flex flex-col items-start">
           <p className="text-md sm:text-lg font-semibold ">
-            <span>{data.gender === "Male" ? "👨‍🦳" : "👩‍🦳"}</span>
+            <span>{data.gender === "Male" ? "👨" : "👩"}</span>
             {data.name}
           </p>
           <p>

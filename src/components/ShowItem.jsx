@@ -28,7 +28,7 @@ export function Item({ theme }) {
       <div className="flex flex-col items-start space-y-5 col-span-2 p-5">
         <div className="flex flex-col items-start gap-1">
           <p className="text-2xl font-semibold ms-1 ">
-            <span>{dataItem.gender === "Male" ? "👨‍🦳" : "👩‍🦳"}</span>
+            <span>{dataItem.gender === "Male" ? "👨" : "👩"}</span>
             {dataItem.name}
           </p>
           <p className="font-semibold">
