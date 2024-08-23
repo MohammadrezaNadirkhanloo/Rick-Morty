@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegEye } from "react-icons/fa";
-import { allCharacters } from "../../data/data.js";
+import Loader from "./Loader";
 
-function ListItem({ theme }) {
-  const datas = allCharacters;
+function ListItem({ theme,characters }) {
+
+
   return (
     <div className="space-y-3">
-      {datas.map((item) => (
+      {characters.map((item) => (
         <Itemlist key={item.id} data={item} theme={theme} />
       ))}
     </div>

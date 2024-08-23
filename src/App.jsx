@@ -32,7 +32,7 @@ function App() {
       </Header>
       <Section>
         <div>
-          <ListItem theme={theme}  />
+          <ListItem theme={theme} characters={characters} />
         </div>
         <div className="col-span-2">
           <ShowItem>
