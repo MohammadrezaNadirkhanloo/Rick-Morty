@@ -14,15 +14,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
+    function fetchData() {
       try {
         setIsLoading(true);
-        const res = await fetch("https://rickandmortyapi.com/api/character");
-        if (!res.ok) throw new Error("Error");
-        const data = await res.json();
-        setCharacters(data.results.slice(0, 6));
-        toast.success("welcome");
-        setIsLoading(false);
+        setTimeout(async () => {
+          const res = await fetch("https://rickandmortyapi.com/api/character");
+          if (!res.ok) throw new Error("Check the internet");
+          const data = await res.json();
+          setCharacters(data.results.slice(0, 8));
+          toast.success("welcome");
+          setIsLoading(false);
+        }, 1000);
       } catch (err) {
         toast.error(err.message);
       }
