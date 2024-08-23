@@ -21,7 +21,7 @@ export function Item({ theme }) {
       <div>
         <img
           src={dataItem.image}
-          className="rounded-lg sm:w-56 w-full h-full"
+          className="rounded-xl sm:w-56 w-full h-full"
           alt="Actor"
         />
       </div>
