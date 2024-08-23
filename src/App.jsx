@@ -53,10 +53,14 @@ function App() {
           )}
         </div>
         <div className="col-span-2">
-          <ShowItem>
-            <Item theme={theme} />
-            <Episodes theme={theme} />
-          </ShowItem>
+          {isLoading ? (
+            <Loader size={"big"} />
+          ) : (
+            <ShowItem>
+              <Item theme={theme} />
+              <Episodes theme={theme} />
+            </ShowItem>
+          )}
         </div>
       </Section>
     </>
