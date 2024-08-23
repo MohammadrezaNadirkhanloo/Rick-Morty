@@ -7,6 +7,7 @@ import Episodes from "./components/Episodes";
 import Loader from "./components/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 function App() {
   const [theme, setTheme] = useState("dim");
@@ -18,15 +19,13 @@ function App() {
       try {
         setIsLoading(true);
         setTimeout(async () => {
-          const res = await fetch("https://rickandmortyapi.com/api/character");
-          if (!res.ok) throw new Error("Check the internet");
-          const data = await res.json();
+          const {data} = await axios.get("https://rickandmortyapi.com/api/character");
           setCharacters(data.results.slice(0, 8));
           toast.success("welcome");
           setIsLoading(false);
         }, 2000);
       } catch (err) {
-        toast.error(err.message);
+        toast.error(err.response.data.error);
       }
     }
     fetchData();
