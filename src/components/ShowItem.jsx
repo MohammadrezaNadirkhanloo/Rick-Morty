@@ -10,6 +10,8 @@ export default ShowItem;
 export function Item({ theme }) {
   const dataItem = character;
 
+
+
   return (
     <div
       className={`${
@@ -17,7 +19,11 @@ export function Item({ theme }) {
       } p-1 rounded-2xl grid grid-cols-1 sm:grid-cols-3 lg:flex lg:justify-start shadow-md sm:gap-2`}
     >
       <div>
-        <img src={dataItem.image} className="rounded-lg sm:w-56 w-full h-full" alt="Actor" />
+        <img
+          src={dataItem.image}
+          className="rounded-lg sm:w-56 w-full h-full"
+          alt="Actor"
+        />
       </div>
       <div className="flex flex-col items-start space-y-5 col-span-2 p-5">
         <div className="flex flex-col items-start gap-1">
