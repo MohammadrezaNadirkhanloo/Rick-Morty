@@ -37,7 +37,7 @@ function App() {
       <Section>
         <div>
           {isLoading ? (
-            <Loader />
+            <Loader size={"small"} />
           ) : (
             <ListItem theme={theme} characters={characters} />
           )}
