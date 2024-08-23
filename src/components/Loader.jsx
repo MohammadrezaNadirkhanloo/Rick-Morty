@@ -26,7 +26,7 @@ function Loader({ size, theme }) {
           <div>
             <div className="skeleton sm:w-56 w-full h-60"></div>
           </div>
-          <div className="flex flex-col items-start space-y-5 col-span-2 p-5">
+          <div className="flex flex-col items-start space-y-5 col-span-2 p-4">
             <div className="flex flex-col items-start gap-3">
               <div className="skeleton h-4 w-52"></div>
               <div className="skeleton h-4 w-32"></div>
@@ -36,7 +36,7 @@ function Loader({ size, theme }) {
               <div className="skeleton h-4 w-40"></div>
             </div>
             <div>
-              <button className="btn">
+              <button className="btn rounded-full">
                 <span className="loading loading-spinner"></span>
                 loading
               </button>
