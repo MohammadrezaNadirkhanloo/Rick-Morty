@@ -21,10 +21,10 @@ function App() {
         if (!res.ok) throw new Error("Error");
         const data = await res.json();
         setCharacters(data.results.slice(0, 6));
-        // toast.success("welcome");
+        toast.success("welcome");
         setIsLoading(false);
       } catch (err) {
-        // toast.error(err.message);
+        toast.error(err.message);
       }
     }
     fetchData();
@@ -37,7 +37,7 @@ function App() {
   };
   return (
     <>
-      {/* <ToastContainer theme="colored" /> */}
+      <ToastContainer theme="colored" />
 
       <Header theme={theme}>
         <ChangeTheme handelTheme={handelChangeTheme} />
