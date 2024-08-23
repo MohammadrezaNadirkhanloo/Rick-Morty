@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
-import Loader from "./Loader";
+import { PiEyeSlash } from "react-icons/pi";
 
-function ListItem({ theme,characters }) {
-
-
+function ListItem({ theme, characters }) {
+  const [isShow, setIsShow] = useState(1);
+  function handelShowEys(id) {
+    setIsShow(id);
+  }
   return (
     <div className="space-y-3">
       {characters.map((item) => (
-        <Itemlist key={item.id} data={item} theme={theme} />
+        <Itemlist
+          key={item.id}
+          data={item}
+          theme={theme}
+          statusEys={isShow}
+          eventHandel={handelShowEys}
+        />
       ))}
     </div>
   );
@@ -16,7 +24,7 @@ function ListItem({ theme,characters }) {
 
 export default ListItem;
 
-function Itemlist({ data, theme }) {
+function Itemlist({ data, theme, statusEys, eventHandel }) {
   return (
     <div
       className={`${
@@ -39,7 +47,16 @@ function Itemlist({ data, theme }) {
         </div>
       </div>
       <div>
-        <FaRegEye size={23} className="text-red-600 cursor-pointer" />
+        <button
+          className="btn btn-ghost btn-circle"
+          onClick={() => eventHandel(data.id)}
+        >
+          {statusEys === data.id ? (
+            <PiEyeSlash size={23} className="text-red-600 cursor-pointer" />
+          ) : (
+            <FaRegEye size={23} className="text-red-600 cursor-pointer" />
+          )}
+        </button>
       </div>
     </div>
   );
