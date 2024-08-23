@@ -47,14 +47,14 @@ function App() {
       <Section>
         <div>
           {isLoading ? (
-            <Loader size={"small"} />
+            <Loader size={"small"} theme={theme} />
           ) : (
             <ListItem theme={theme} characters={characters} />
           )}
         </div>
         <div className="col-span-2">
           {isLoading ? (
-            <Loader size={"big"} />
+            <Loader size={"big"} theme={theme} />
           ) : (
             <ShowItem>
               <Item theme={theme} />
