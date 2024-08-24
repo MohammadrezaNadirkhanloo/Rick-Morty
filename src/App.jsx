@@ -13,23 +13,25 @@ function App() {
   const [theme, setTheme] = useState("dim");
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    function fetchData() {
-      try {
-        setIsLoading(true);
-        setTimeout(async () => {
-          const {data} = await axios.get("https://rickandmortyapi.com/api/character");
+    setIsLoading(true);
+    setTimeout(() => {
+      async function fetchData() {
+        try {
+          const { data } = await axios.get(
+            `https://rickandmortyapi.com/api/character/?name=${search}`
+          );
           setCharacters(data.results.slice(0, 8));
-          toast.success("welcome");
           setIsLoading(false);
-        }, 2000);
-      } catch (err) {
-        toast.error(err.response.data.error);
+        } catch (err) {
+          toast.error(err.response.data.error);
+        }
       }
-    }
-    fetchData();
-  }, []);
+      fetchData();
+    }, 2000);
+  }, [search]);
 
   const handelChangeTheme = () => {
     const newTheme = theme === "dim" ? "light" : "dim";
@@ -38,10 +40,10 @@ function App() {
   };
   return (
     <>
-      <ToastContainer theme="colored" />
+      <ToastContainer stacked  theme="colored" />
 
       <Header theme={theme}>
-      <SearchItems theme={theme} />
+        <SearchItems theme={theme} search={search} setSearch={setSearch} />
         <ChangeTheme handelTheme={handelChangeTheme} />
       </Header>
       <Section>

@@ -41,34 +41,29 @@ export function ChangeTheme({ handelTheme }) {
 export function SearchItems({ theme, search, setSearch }) {
   return (
     <>
-      <div class="w-full text-end">
-        <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-            <div class="indicator">
+      <div className="w-full text-end">
+        <div className="dropdown dropdown-end">
+          <div tabIndex="0" role="button" className="btn btn-ghost btn-circle">
+            <div className="indicator">
               <IoSearch size={20} />
             </div>
           </div>
           <div
-            tabindex="0"
-            class={`card card-compact dropdown-content ${
+            tabIndex="0"
+            className={`card card-compact dropdown-content ${
               theme === "dim" ? "bg-gray-700" : "bg-gray-100"
             } z-[1] mt-3 w-48 sm:w-72 md:w-96 shadow-2xl`}
           >
-            <form class="card-body">
+            <div className="card-body">
               <input
                 id="inputFilter"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 type="text"
                 placeholder="Search..."
-                class="input input-bordered w-full"
+                className="input input-bordered w-full"
               />
-              <div class="card-actions">
-                <button id="btnSearch" class="btn w-full shadow-lg">
-                  Search
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
