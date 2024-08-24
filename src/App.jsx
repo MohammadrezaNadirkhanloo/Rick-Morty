@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Header, { ChangeTheme } from "./components/Header";
+import Header, { ChangeTheme, SearchItems } from "./components/Header";
 import Section from "./components/Section";
 import ListItem from "./components/ListItem";
 import ShowItem, { Item } from "./components/ShowItem";
@@ -41,6 +41,7 @@ function App() {
       <ToastContainer theme="colored" />
 
       <Header theme={theme}>
+      <SearchItems theme={theme} />
         <ChangeTheme handelTheme={handelChangeTheme} />
       </Header>
       <Section>
