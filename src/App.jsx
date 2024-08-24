@@ -26,6 +26,7 @@ function App() {
           setCharacters(data.results.slice(0, 8));
           setIsLoading(false);
         } catch (err) {
+          setCharacters([])
           toast.error(err.response.data.error);
         }
       }
