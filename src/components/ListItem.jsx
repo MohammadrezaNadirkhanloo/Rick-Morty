@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaRegEye } from "react-icons/fa";
 import { PiEyeSlash } from "react-icons/pi";
 
-function ListItem({ theme, characters }) {
-  const [isShow, setIsShow] = useState(1);
-  function handelShowEys(id) {
-    setIsShow(id);
-  }
+function ListItem({ theme, characters, isShow, handelShowEys }) {
   return (
     <div className="space-y-3">
       {characters.map((item) => (
