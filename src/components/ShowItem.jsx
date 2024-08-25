@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { LuArrowDownUp } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import Loader from "./Loader.jsx";
-import { FaCircleArrowDown } from "react-icons/fa6";
-import { episodes } from "../../data/data.js";
 
 function ShowItem({ children }) {
   return (
@@ -31,9 +30,9 @@ export function Item({ theme, isShow }) {
         setCharacter(data);
         const episodeId = data.episode.map((e) => e.split("/").at(-1));
         const { data: epData } = await axios.get(
-          `https://rickandmortyapi.com/api/episode/${episodeId.slice(0, 13)}`
+          `https://rickandmortyapi.com/api/episode/${episodeId}`
         );
-        setEpisodes(epData);
+        setEpisodes([epData].flat().slice(0, 13));
       } catch (error) {
         toast.error(error.response.data.error);
       } finally {
@@ -104,7 +103,9 @@ export function Episodes({ theme, episodes }) {
     >
       <div className="flex items-center justify-between mb-6">
         <p className="font-bold text-2xl">List of Episodes:</p>
-        <FaCircleArrowDown size={20} className="cursor-pointer" />
+        <button className="btn btn-ghost btn-circle">
+          <LuArrowDownUp size={20} className="cursor-pointer" />
+        </button>
       </div>
       <div className="space-y-4">
         {episodes.map((item, index) => (
