@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Episodes from "./components/Episodes";
 import Header, { ChangeTheme, SearchItems } from "./components/Header";
 import ListItem from "./components/ListItem";
 import Loader from "./components/Loader";
@@ -71,7 +70,6 @@ function App() {
           ) : (
             <ShowItem>
               <Item theme={theme} isShow={isShow} />
-              <Episodes theme={theme} isShow={isShow} />
             </ShowItem>
           )}
         </div>
