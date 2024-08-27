@@ -102,6 +102,17 @@ export function Item({ theme, isShow, handelFavourites, isListFavourite }) {
 }
 
 export function Episodes({ theme, episodes }) {
+  const [isSort, setIsSort] = useState(false);
+  let sortEpisodes;
+  if (isSort) {
+    sortEpisodes = episodes.sort(
+      (a, b) => new Date(a.created) - new Date(b.created)
+    );
+  } else {
+    sortEpisodes = episodes.sort(
+      (a, b) => new Date(b.created) - new Date(a.created)
+    );
+  }
   if (!episodes) return;
   return (
     <div
@@ -111,12 +122,15 @@ export function Episodes({ theme, episodes }) {
     >
       <div className="flex items-center justify-between mb-6">
         <p className="font-bold text-2xl">List of Episodes:</p>
-        <button className="btn btn-ghost btn-circle">
+        <button
+          onClick={() => setIsSort((n) => !n)}
+          className="btn btn-ghost btn-circle"
+        >
           <LuArrowDownUp size={20} className="cursor-pointer" />
         </button>
       </div>
       <div className="space-y-4">
-        {episodes.map((item, index) => (
+        {sortEpisodes.map((item, index) => (
           <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-2">
             <div className="flex text-lg font-semibold">
               <p>
