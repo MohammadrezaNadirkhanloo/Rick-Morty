@@ -2,7 +2,7 @@ import { FcLike } from "react-icons/fc";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { Itemlist } from "./ListItem";
 
-function ShowLike({ favourites, numOfFavourites, theme }) {
+function ShowLike({ favourites, numOfFavourites, theme,eventHandelDelete }) {
   return (
     <>
       <div>
@@ -31,7 +31,7 @@ function ShowLike({ favourites, numOfFavourites, theme }) {
                     <div>
                       <button
                         className="btn btn-ghost btn-circle"
-                        onClick={() => eventHandel(data.id)}
+                        onClick={() => eventHandelDelete(data.id)}
                       >
                         <MdOutlineDeleteOutline
                           className="text-red-600"

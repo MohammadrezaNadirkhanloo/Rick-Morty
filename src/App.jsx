@@ -31,7 +31,7 @@ function App() {
           setCharacters(data.results.slice(0, 8));
           setIsLoading(false);
         } catch (err) {
-          if (!axios.isCancel()) {            
+          if (!axios.isCancel()) {
             setCharacters([]);
             toast.error(err.response.data.error);
           }
@@ -59,6 +59,10 @@ function App() {
     setFavourite((n) => [...n, item]);
   }
 
+  function eventHandelDelete(id) {
+    setFavourite((preFav) => preFav.filter((item) => item.id !== id));
+  }
+
   const isListFavourite = favourite.map((item) => item.id).includes(isShow);
 
   return (
@@ -70,6 +74,7 @@ function App() {
           favourites={favourite}
           numOfFavourites={favourite.length}
           theme={theme}
+          eventHandelDelete={eventHandelDelete}
         />
         <ChangeTheme handelTheme={handelChangeTheme} />
       </Header>
