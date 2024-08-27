@@ -28,9 +28,9 @@ export default ListItem;
 export function Itemlist({ data, theme, children }) {
   return (
     <div
-    className={`${
-      theme === "dim" ? "bg-gray-700/50" : "bg-gray-100/50"
-    } p-3 rounded-2xl flex items-center justify-between shadow-md hover:cursor-pointer hover:-translate-y-1  hover:shadow-xl transition `}
+      className={`${
+        theme === "dim" ? "bg-gray-700/50" : "bg-gray-100/50"
+      } p-3 rounded-2xl flex items-center justify-between shadow-md hover:cursor-pointer hover:-translate-y-1  hover:shadow-xl transition `}
     >
       <div className="flex items-center gap-3">
         <div>

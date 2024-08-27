@@ -2,7 +2,7 @@ import { FcLike } from "react-icons/fc";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { Itemlist } from "./ListItem";
 
-function ShowLike({ favourites, numOfFavourites, theme,eventHandelDelete }) {
+function ShowLike({ favourites, numOfFavourites, theme, eventHandelDelete }) {
   return (
     <>
       <div>
