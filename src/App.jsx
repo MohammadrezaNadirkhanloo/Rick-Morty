@@ -7,6 +7,7 @@ import ListItem from "./components/ListItem";
 import Loader from "./components/Loader";
 import Section from "./components/Section";
 import ShowItem, { Item } from "./components/ShowItem";
+import ShowLike from "./components/ShowLike";
 
 function App() {
   const [theme, setTheme] = useState("dim");
@@ -14,24 +15,34 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [isShow, setIsShow] = useState(1);
+  const [favourite, setFavourite] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
+    const controller = new AbortController();
+    const signal = controller.signal;
     setTimeout(() => {
       async function fetchData() {
         try {
           const { data } = await axios.get(
-            `https://rickandmortyapi.com/api/character/?name=${search}`
+            `https://rickandmortyapi.com/api/character/?name=${search}`,
+            { signal }
           );
           setCharacters(data.results.slice(0, 8));
           setIsLoading(false);
         } catch (err) {
-          setCharacters([]);
-          toast.error(err.response.data.error);
+          if (!axios.isCancel()) {            
+            setCharacters([]);
+            toast.error(err.response.data.error);
+          }
         }
       }
       fetchData();
     }, 2000);
+
+    return () => {
+      controller.abort();
+    };
   }, [search]);
 
   const handelChangeTheme = () => {
@@ -43,12 +54,23 @@ function App() {
   function handelShowEys(id) {
     setIsShow(id);
   }
+
+  function handelFavourites(item) {
+    setFavourite((n) => [...n, item]);
+  }
+
+  const isListFavourite = favourite.map((item) => item.id).includes(isShow);
+
   return (
     <>
       <ToastContainer stacked theme="colored" />
-
       <Header theme={theme}>
         <SearchItems theme={theme} search={search} setSearch={setSearch} />
+        <ShowLike
+          favourites={favourite}
+          numOfFavourites={favourite.length}
+          theme={theme}
+        />
         <ChangeTheme handelTheme={handelChangeTheme} />
       </Header>
       <Section>
@@ -69,7 +91,12 @@ function App() {
             <Loader size={"big"} theme={theme} />
           ) : (
             <ShowItem>
-              <Item theme={theme} isShow={isShow} />
+              <Item
+                theme={theme}
+                isShow={isShow}
+                handelFavourites={handelFavourites}
+                isListFavourite={isListFavourite}
+              />
             </ShowItem>
           )}
         </div>

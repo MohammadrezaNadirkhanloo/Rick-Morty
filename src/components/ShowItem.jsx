@@ -1,21 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { FaCheck } from "react-icons/fa";
 import { LuArrowDownUp } from "react-icons/lu";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Loader from "./Loader.jsx";
 
 function ShowItem({ children }) {
-  return (
-    <div className="flex flex-col gap-6">
-      <ToastContainer stacked theme="colored" />
-      {children}
-    </div>
-  );
+  return <div className="flex flex-col gap-6">{children}</div>;
 }
 
 export default ShowItem;
 
-export function Item({ theme, isShow }) {
+export function Item({ theme, isShow, handelFavourites, isListFavourite }) {
   const [character, setCharacter] = useState(null);
   const [isLoad, setIsLoad] = useState(false);
   const [episodes, setEpisodes] = useState([]);
@@ -80,9 +76,21 @@ export function Item({ theme, isShow }) {
                 <p className="font-semibold">{character.location.name}</p>
               </div>
               <div>
-                <button className="btn btn-outline rounded-badge text-lg borde">
-                  Add to Favorite
-                </button>
+                {isListFavourite ? (
+                  <p className="font-semibold text-lg flex items-center gap-2">
+                    Selected{" "}
+                    <span>
+                      <FaCheck className="text-green-500" />
+                    </span>{" "}
+                  </p>
+                ) : (
+                  <button
+                    onClick={() => handelFavourites(character)}
+                    className="btn btn-outline rounded-badge text-lg borde"
+                  >
+                    Add to Favorite
+                  </button>
+                )}
               </div>
             </div>
           </div>

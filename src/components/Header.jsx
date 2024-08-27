@@ -1,5 +1,4 @@
 import { FaMoon, FaSun } from "react-icons/fa6";
-import ShowLike from "./ShowLike";
 import { IoSearch } from "react-icons/io5";
 
 function Header({ theme, children }) {
@@ -11,10 +10,7 @@ function Header({ theme, children }) {
         }`}
       >
         <a className="text-xl">Rick & Morty</a>
-        <div className="flex items-center gap-1">
-          <ShowLike />
-          {children}
-        </div>
+        <div className="flex items-center gap-1">{children}</div>
       </div>
     </>
   );
