@@ -6,13 +6,18 @@ function ListItem({ theme, characters, isShow, handelShowEys }) {
   return (
     <div className="space-y-3">
       {characters.map((item) => (
-        <Itemlist
-          key={item.id}
-          data={item}
-          theme={theme}
-          statusEys={isShow}
-          eventHandel={handelShowEys}
-        />
+        <Itemlist key={item.id} data={item} theme={theme}>
+          <button
+            className="btn btn-ghost btn-circle"
+            onClick={() => handelShowEys(item.id)}
+          >
+            {isShow === item.id ? (
+              <PiEyeSlash size={23} className="text-red-600 cursor-pointer" />
+            ) : (
+              <FaRegEye size={23} className="text-red-600 cursor-pointer" />
+            )}
+          </button>
+        </Itemlist>
       ))}
     </div>
   );
@@ -20,12 +25,12 @@ function ListItem({ theme, characters, isShow, handelShowEys }) {
 
 export default ListItem;
 
-function Itemlist({ data, theme, statusEys, eventHandel }) {
+export function Itemlist({ data, theme, children }) {
   return (
     <div
-      className={`${
-        theme === "dim" ? "bg-gray-700/50" : "bg-gray-100/50"
-      } p-3 rounded-2xl flex items-center justify-between shadow-md`}
+    className={`${
+      theme === "dim" ? "bg-gray-700/50" : "bg-gray-100/50"
+    } p-3 rounded-2xl flex items-center justify-between shadow-md hover:cursor-pointer hover:-translate-y-1  hover:shadow-xl transition `}
     >
       <div className="flex items-center gap-3">
         <div>
@@ -42,18 +47,7 @@ function Itemlist({ data, theme, statusEys, eventHandel }) {
           </p>
         </div>
       </div>
-      <div>
-        <button
-          className="btn btn-ghost btn-circle"
-          onClick={() => eventHandel(data.id)}
-        >
-          {statusEys === data.id ? (
-            <PiEyeSlash size={23} className="text-red-600 cursor-pointer" />
-          ) : (
-            <FaRegEye size={23} className="text-red-600 cursor-pointer" />
-          )}
-        </button>
-      </div>
+      <div>{children}</div>
     </div>
   );
 }
