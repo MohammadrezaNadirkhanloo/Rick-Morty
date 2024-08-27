@@ -10,12 +10,16 @@ import ShowItem, { Item } from "./components/ShowItem";
 import ShowLike from "./components/ShowLike";
 
 function App() {
-  const [theme, setTheme] = useState("dim");
+  const [theme, setTheme] = useState(
+    () => JSON.parse(localStorage.getItem("THEME")) || "dim"
+  );
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [isShow, setIsShow] = useState(1);
-  const [favourite, setFavourite] = useState([]);
+  const [favourite, setFavourite] = useState(
+    () => JSON.parse(localStorage.getItem("FAVOURITE")) || []
+  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,6 +48,15 @@ function App() {
       controller.abort();
     };
   }, [search]);
+
+  useEffect(() => {
+    localStorage.setItem("FAVOURITE", JSON.stringify(favourite));
+  }, [favourite]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("THEME", JSON.stringify(theme));
+  }, [theme]);
 
   const handelChangeTheme = () => {
     const newTheme = theme === "dim" ? "light" : "dim";
