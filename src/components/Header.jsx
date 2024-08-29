@@ -27,8 +27,8 @@ export function ChangeTheme({ handelTheme }) {
           type="checkbox"
           className="theme-controller "
         />
-        <FaSun className="swap-off fill-current" size={20} />
         <FaMoon className="swap-on fill-current" size={20} />
+        <FaSun className="swap-off fill-current" size={20} />
       </label>
     </div>
   );

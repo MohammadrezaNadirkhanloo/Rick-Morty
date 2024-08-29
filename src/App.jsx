@@ -8,18 +8,16 @@ import Loader from "./components/Loader";
 import Section from "./components/Section";
 import ShowItem, { Item } from "./components/ShowItem";
 import ShowLike from "./components/ShowLike";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [theme, setTheme] = useState(
-    () => JSON.parse(localStorage.getItem("THEME")) || "dim"
-  );
+  const [theme, setTheme] = useLocalStorage("THEME", "dim", true);
+  const [favourite, setFavourite] = useLocalStorage("FAVOURITE", []);
+
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [isShow, setIsShow] = useState(1);
-  const [favourite, setFavourite] = useState(
-    () => JSON.parse(localStorage.getItem("FAVOURITE")) || []
-  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -48,15 +46,6 @@ function App() {
       controller.abort();
     };
   }, [search]);
-
-  useEffect(() => {
-    localStorage.setItem("FAVOURITE", JSON.stringify(favourite));
-  }, [favourite]);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem("THEME", JSON.stringify(theme));
-  }, [theme]);
 
   const handelChangeTheme = () => {
     const newTheme = theme === "dim" ? "light" : "dim";
