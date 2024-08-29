@@ -9,43 +9,18 @@ import Section from "./components/Section";
 import ShowItem, { Item } from "./components/ShowItem";
 import ShowLike from "./components/ShowLike";
 import useLocalStorage from "./hooks/useLocalStorage";
+import useCharecters from "./hooks/useCharecters";
 
 function App() {
   const [theme, setTheme] = useLocalStorage("THEME", "dim", true);
   const [favourite, setFavourite] = useLocalStorage("FAVOURITE", []);
 
-  const [characters, setCharacters] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const { characters, isLoading } = useCharecters(
+    search,
+    "https://rickandmortyapi.com/api/character/?name"
+  );
   const [isShow, setIsShow] = useState(1);
-
-  useEffect(() => {
-    setIsLoading(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-    setTimeout(() => {
-      async function fetchData() {
-        try {
-          const { data } = await axios.get(
-            `https://rickandmortyapi.com/api/character/?name=${search}`,
-            { signal }
-          );
-          setCharacters(data.results.slice(0, 8));
-          setIsLoading(false);
-        } catch (err) {
-          if (!axios.isCancel()) {
-            setCharacters([]);
-            toast.error(err.response.data.error);
-          }
-        }
-      }
-      fetchData();
-    }, 2000);
-
-    return () => {
-      controller.abort();
-    };
-  }, [search]);
 
   const handelChangeTheme = () => {
     const newTheme = theme === "dim" ? "light" : "dim";
